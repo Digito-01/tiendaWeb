@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProductoController; 
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\ClienteController; 
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +22,9 @@ Route::middleware('auth')->group(function () {
     // Rutas de recursos
     Route::resource('categorias', CategoriaController::class);
     Route::resource('productos', ProductoController::class);
+    Route::resource('personas', PersonaController::class);
+    Route::resource('clientes', ClienteController::class);
+
     
 });
 
