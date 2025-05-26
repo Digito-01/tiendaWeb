@@ -7,7 +7,7 @@
 
     <div class="max-w-6xl mx-auto py-6">
         <a href="{{ route('clientes.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block">Agregar Cliente</a>
-
+        <!-- alertas --> <x-alertas /> <!-- Fin de alertas -->
         <div class="bg-white shadow overflow-hidden rounded-lg">
             <table class="min-w-full table-auto border-collapse border border-gray-200">
                 <thead class="bg-gray-100">
@@ -22,7 +22,7 @@
                 <tbody>
                     @foreach ($clientes as $cliente)
                         <tr class="border-t">
-                            <td class="px-6 py-4">{{ $cliente->persona->NOMBRES }} {{ $cliente->persona->APELLIDOS }}</td>
+                            <td class="px-6 py-4 align-middle">{{ $cliente->persona->NOMBRES }} {{ $cliente->persona->APELLIDOS }}</td>
                             <td class="px-6 py-4">{{ $cliente->persona->DNI }}</td>
                             <td class="px-6 py-4">{{ $cliente->CREADO}}</td>
                             <td class="px-6 py-4">{{ $cliente->ACTUALIZADO }}</td>
@@ -31,7 +31,7 @@
                                 <form action="{{ route('clientes.destroy', $cliente->IDCLIENTE) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+                                    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')" class="text-red-600 hover:underline"> Eliminar </button>
                                 </form>
                             </td>
                         </tr>
